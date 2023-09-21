@@ -21,14 +21,15 @@ namespace adonet_db_videogame
                 {
                     connection.Open();
 
-                    string query = "";
+                    string query = "SELECT id, name, release_date FROM videogames";
 
                     using (SqlCommand cmd = new SqlCommand(query, connection))
                     using (SqlDataReader data = cmd.ExecuteReader())
                     {
                         while (data.Read())
                         {
-
+                           Videogame videogameReaded = new Videogame(data.GetInt64(0), data.GetString(1), data.GetDateTime(2));
+                           videogames.Add(videogameReaded);
                         }
                     }
                 }catch (Exception ex)

@@ -21,7 +21,7 @@ namespace adonet_db_videogame
 
         public override string ToString()
         {
-            return $"ID: {Id} Gioco: {Name} rilasciato in data {Relase_date}";
+            return $"ID:{Id}; Nome:'{Name}' rilasciato in data {Relase_date}";
         }
     }
 }
