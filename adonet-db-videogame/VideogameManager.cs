@@ -29,7 +29,7 @@ namespace adonet_db_videogame
                         while (data.Read())
                         {
                            Videogame videogameReaded = new Videogame(data.GetInt64(0), data.GetString(1), data.GetDateTime(2));
-                           videogames.Add(videogameReaded);
+                            videogames.Add(videogameReaded);
                         }
                     }
                 }catch (Exception ex)
@@ -39,6 +39,35 @@ namespace adonet_db_videogame
             }
 
             return videogames;
+        }
+
+        public static bool SearchGamesFromId(long id)
+        {
+            
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    Console.WriteLine("Inserisci l'Id del gioco che si desidera ricercare");
+                    long searchById = Convert.ToInt64(Console.ReadLine());
+
+                    string query = "SELECT id, name, release_date FROM videogames WHERE id LIKE @id ";
+
+                    SqlCommand cmd = new SqlCommand(query, connection);
+                    cmd.Parameters.Add(new SqlParameter("@id", searchById));
+
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+
+            return false;
         }
 
 

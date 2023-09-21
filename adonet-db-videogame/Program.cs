@@ -6,8 +6,8 @@ internal class Program
     private static void Main(string[] args)
     {
         Console.WriteLine("Benvenuto nel nostro sistema di gestione Aeroportuale!");
-
-        while (true)
+        bool program = true;
+        while (program)
         {
             Console.WriteLine(@"
             - 1: Inserisci un nuovo videogioco 
@@ -37,6 +37,15 @@ internal class Program
                     break;
 
                 case 2:
+                    bool videogameSearch = SearchGamesFromId();
+
+                    Console.WriteLine("Ecco il videogioco da te richiesto:");
+
+
+                    Console.WriteLine($"- {videogameSearch}");
+                  
+
+                    Console.WriteLine();
                     break;
 
                 case 3:
@@ -45,9 +54,10 @@ internal class Program
                 case 4:
                     break;
 
-                case 5
-
-                     :break;
+                case 5:
+                    program = false;
+                    Console.WriteLine("Grazie e arrivederci.");
+                     break;
 
                 default:
                     Console.WriteLine("Non hai selezionato un'opzione valida!");

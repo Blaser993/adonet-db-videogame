@@ -23,5 +23,7 @@ namespace adonet_db_videogame
         {
             return $"ID:{Id}; Nome:'{Name}' rilasciato in data {Relase_date}";
         }
+
+
     }
 }
