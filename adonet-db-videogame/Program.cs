@@ -37,18 +37,34 @@ internal class Program
                     break;
 
                 case 2:
-                    bool videogameSearch = SearchGamesFromId();
+
+                    Videogame videogameSearch = VideogameManager.SearchGamesFromId();
 
                     Console.WriteLine("Ecco il videogioco da te richiesto:");
 
-
-                    Console.WriteLine($"- {videogameSearch}");
-                  
+                    if (videogameSearch != null)
+                    {
+                        Console.WriteLine($"- {videogameSearch}");
+                    }
+                    else
+                    {
+                        Console.WriteLine("il videogioco con l'Id richiesto non esiste");
+                    }
 
                     Console.WriteLine();
                     break;
 
                 case 3:
+
+                    List<Videogame> videogames1 = VideogameManager.SearchGamesFromKeyword();
+
+                    Console.WriteLine("Ecco la lista dei risultati:");
+
+                    foreach (Videogame videogame in videogames1)
+                    {
+                        Console.WriteLine($"- {videogame}");
+                    }
+                    Console.WriteLine();
                     break;
 
                 case 4:
